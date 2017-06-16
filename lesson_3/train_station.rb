@@ -96,12 +96,10 @@ class Train
   end
 
   def move_forward
-    #@current_station = @route.stations[@current_station_number + 1]
     @current_station_number += 1
   end
 
   def move_back
-    #@current_station = @route.stations[@current_station_number - 1]
     @current_station_number -= 1
   end
 
