@@ -1,35 +1,35 @@
 #####################################################---Station---########################################################################
 class Station
 
-  attr_reader :name, :list_of_trains
+  attr_reader :name, :trains
 
   def initialize(name)
     @name = name
-    @list_of_trains = []
+    @trains = []
   end
 
   #Add a train to the list of trains
   def add_train(train)
-    self.list_of_trains << train
+    self.trains << train
     puts "The train number #{train.number} has come to the station #{self.name}"
   end
 
   # Print the list of trains
   def list
-    self.list_of_trains.each do |train|
+    self.trains.each do |train|
       puts "Train number #{train.number}, type of #{train.type}, with #{train.number_of_carts} carts."
     end
   end
 
   # Print total number of train types
   def by_type(type)
-    self.list_of_trains.select.count { |train| train.type if train.type == type}
+    self.trains.select.count { |train| train.type if train.type == type}
   end
 
-  #Delete a train from the array list_of_trains
+  #Delete a train from the array trains
   def train_departure(departured_train)
     puts "Enter the number of the train for the next departure: "
-    @list_of_trains.delete_if {|train| train.number == departured_train}
+    @trains.delete_if {|train| train.number == departured_train}
     puts "The train number #{departured_train} has departured from the #{self.name} station."
   end
 
@@ -47,8 +47,8 @@ class Route
   end
 
   def delete_station(station_to_delete)
-    @stations.delete{|intermediate_station| intermediate_station == station_to_delete}
-    puts "Station #{station_to_delete} was deleted."
+    #@stations.delete_if{|intermediate_station| intermediate_station == station_to_delete}
+    @stations.delete(station_to_delete)
   end
 
 end
@@ -56,7 +56,7 @@ end
 
 class Train
 
-  attr_reader :number_of_carts, :type, :number, :route, :speed, :current_station
+  attr_reader :number_of_carts, :type, :number, :route, :speed
 
   def initialize (number, type, number_of_carts)
     @number = number
@@ -96,25 +96,25 @@ class Train
   end
 
   def move_forward
-    @current_station = @route.stations[@current_station_number + 1]
+    #@current_station = @route.stations[@current_station_number + 1]
     @current_station_number += 1
   end
 
   def move_back
-    @current_station = @route.stations[@current_station_number - 1]
+    #@current_station = @route.stations[@current_station_number - 1]
     @current_station_number -= 1
   end
 
   def previous_station
-    @route.stations[@current_station_number - 1].station_name
+    @route.stations[@current_station_number - 1]
   end
 
   def next_station
-    @route.stations[@current_station_number + 1].station_name
+    @route.stations[@current_station_number + 1]
   end
 
   def current_station
-    @current_station
+    @current_station = @route.stations[@current_station_number]
   end
 
 end
