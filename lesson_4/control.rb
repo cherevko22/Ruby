@@ -31,26 +31,26 @@ class Controller
       when 2
         create_train
       when 3
-        if @stations.nil? || @stations.size == 1
+        if @stations.empty? || @stations.size == 1
           puts "Atleast two stations must be created to create a route!"
         else
           create_route
         end
       when 4
-        if @routes.nil?
+        if @routes.empty?
           puts "A route must be created first!"
         else
           add_station_to_route
         end
       when 5
-        if @routes.nil?
+        if @routes.empty?
           puts "A route must be created first!"
         else
           delete_station_from_route
         end
       when 6
         #A train and a route must be created
-        if @trains.nil? || @routes.nil?
+        if @trains.empty? || @routes.empty?
           puts "Make sure you have at least one train and at least one route."
         else
           add_route!
@@ -84,12 +84,15 @@ class Controller
     end
   end
 
-  def trains_on_station                   #Check!
+  def trains_on_station
     puts "Choose a station:"
     all_stations
     choosen_station = gets.to_i - 1
-    @stations[choosen_station].trains.each do |train|
-      if @stations[choosen_station].trains.nil?
+                                              #!!!!!!!Checkif this works
+    station = @stations[choosen_station]
+
+    station.trains.each do |train|
+      if station.trains.nil?
         puts "No trains at this station."
       else
         puts "Currently on this station is train number: #{train.number}"

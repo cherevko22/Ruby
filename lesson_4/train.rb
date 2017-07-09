@@ -18,9 +18,11 @@ class Train
     if @speed == 0
       if self.type == carriage.type
         @carriages << carriage
-      else puts "Wront type of the carriage."
+      else
+        puts "Wront type of the carriage."
       end
-    else puts "Train must be stopped first."
+    else
+      puts "Train must be stopped first."
     end
   end
 
@@ -46,7 +48,7 @@ class Train
     @current_station_number += 1
   end
 
-  def a
+  def move_back
     @current_station_number -= 1
   end
 
