@@ -1,10 +1,18 @@
 class Station
 
   attr_reader :name, :trains
+  include InstanceCounter
+
+  @@stations= []
 
   def initialize(name)
     @name = name
     @trains = []
+    @@stations << self
+  end
+
+  def self.all
+    @@stations
   end
 
   #Add a train to the list of trains
@@ -14,10 +22,14 @@ class Station
   end
 
   # Print the list of trains
-  def list
+  def all_trains
     self.trains.each do |train|
       puts "Train number #{train.number}, type of #{train.type}, with #{train.number_of_carts} carts."
     end
+  end
+
+  def all_stations
+
   end
 
   # Print total number of train types

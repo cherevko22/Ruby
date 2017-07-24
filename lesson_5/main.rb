@@ -11,7 +11,6 @@ require_relative 'passanger_train'
 require_relative 'control'
 
 
-
 system 'clear'
 
 @controller = Controller.new

@@ -1,17 +1,24 @@
-# Определить, какие методы могут быть помещены в private/protected и вынести
-# их в такую секцию. В комментарии к методу обосновать, почему он был вынесен
-# в private/protected
+require_relative 'modules/manufacturer.rb'
 
 class Train
 
+  include Manufacturer
+
   attr_reader :number, :route, :speed, :type, :carriages, :current_station
   attr_accessor :speed
+
+  @@trains = []
 
   def initialize (number)
     @number = number
     @speed = 0
     @carriages = []
     @amount_carriages = @carriages.count
+    @@trains[number] = self
+  end
+
+  def self.find(number)
+    @@trains[number]
   end
 
   def add_carriage(carriage)
