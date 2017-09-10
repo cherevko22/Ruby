@@ -10,8 +10,8 @@ class Station
 
   #Add a train to the list of trains
   def add_train(train)
-    self.trains << train
-    puts "The train number #{train.number} has come to the station #{self.name}"
+    @trains << train
+    #puts "The train number #{train.number} has come to the station #{self.name}"
   end
 
   # Print the list of trains
@@ -23,7 +23,7 @@ class Station
 
   # Print total number of train types
   def by_type(type)
-    self.trains.select.count { |train| train.type if train.type == type}
+    @trains.select.count { |train| train.type if train.type == type}
   end
 
   #Delete a train from the array trains

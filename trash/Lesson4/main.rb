@@ -1,0 +1,7 @@
+require_relative 'train'
+require_relative 'passanger_train'
+require_relative 'passanger_carriage'
+require_relative 'cargo_train'
+require_relative 'cargo_carriage'
+require_relative 'route'
+require_relative 'station'

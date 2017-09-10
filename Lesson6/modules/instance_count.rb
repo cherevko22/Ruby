@@ -7,7 +7,7 @@ module InstanceCounter
 
   module ClassMethods
     def instances
-      @instances || 0
+      @instances ||= 0
     end
 
     def instances=(number)
