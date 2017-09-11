@@ -1,5 +1,3 @@
-require_relative '../modules/validator.rb'
-
 class Route
   include Validator
 

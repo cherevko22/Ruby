@@ -1,3 +1,7 @@
+require_relative '../modules/vendor.rb'
+require_relative '../modules/validator.rb'
+require_relative '../modules/instance_count.rb'
+
 class Train
   include Vendor
   include Validator
