@@ -6,8 +6,8 @@ class Route
   def initialize (first, last)
     @first = first
     @last = last
+    validate!    
     @stations = [first, last]
-    validate!
   end
 
   def add_station(station)

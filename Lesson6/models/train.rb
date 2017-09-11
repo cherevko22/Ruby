@@ -12,12 +12,12 @@ class Train
 
   def initialize(number)
     @number = number
+    validate!    
     @carriages = []
     @routes = []
     @speed = 0
     @choosen_route = nil
     @@trains[number] = self
-    validate!
     register_instance
   end
 
