@@ -5,6 +5,8 @@ class Station
 
   NAME_PATTERN = /^[A-Z]{2,3}$/
 
+  validate :type, :type, Station
+  
   @@stations = []
 
   def initialize(name)

@@ -8,6 +8,9 @@ class Train
   attr_accessor :routes, :choosen_route, :current_station
   attr_reader  :number, :carriages, :speed
 
+  validate :number, :presence
+  validate :number, format, TRAIN_NUMBER
+
   @@trains = {}
 
   def initialize(number)

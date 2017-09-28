@@ -7,30 +7,31 @@ module Validation
 
   module ClassMethods
 
-    attr_reader :ruls
+    attr_reader :rules
 
-    def validate(name, validation_type, *args)
-      @ruls =|| []
-      @ruls << ( validation_type: validation_type, name: name, options: options )
+    def validate(name, validation_type, *options)
+      @rules ||= []
+      @rules << { validation_type: validation_type, name: name, options: options }
     end
 
   end
 
   module InstanceMethods
-    def valid?
-      validate!
-    rescue
-      false
-    end
-
-    protected
-
-    def validate!
-      self.class.rules.each do |rule|
-        value = instance_variable_get("@#{rule[:name]}")
-        send rule[:validate_method], rule[:name], value, rule[:options].first
+      def valid?
+        validate!
+      rescue
+        false
       end
-      true
+
+      protected
+
+      def validate!
+        self.class.rules.each do |rule|
+          value = instance_variable_get("@#{rule[:name]}")
+          send rule[:validate_method], rule[:name], value, rule[:options].first
+        end
+        true
+      end
     end
 
     def presence(name, value, *_option)

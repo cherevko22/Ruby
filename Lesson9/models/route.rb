@@ -6,7 +6,7 @@ class Route
   def initialize (first, last)
     @first = first
     @last = last
-    validate!
+    #validate!
     @stations = [first, last]
   end
 

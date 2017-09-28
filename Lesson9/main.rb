@@ -1,5 +1,5 @@
 require_relative 'controller/controller.rb'
-require_relative 'modules/Validator.rb'
+require_relative 'modules/validation.rb'
 
 require_relative 'modules/vendor.rb'
 require_relative 'modules/instance_count.rb'
