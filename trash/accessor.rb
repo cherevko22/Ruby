@@ -26,7 +26,7 @@ module Acessors
           end
         end
 
-        def strong_attr_accessor(name, class_name)
+        def strong_attr_accessor(name, name_class)
           var_name = "@#{name}".to_sym
 
           #Getter
@@ -34,7 +34,7 @@ module Acessors
 
           #Setter
           define_method("#{name}=".to_sym) do |value|
-            raise 'Classes are different.' unless self.class == class_name
+            raise 'Classes are different.' unless self.class == name_class
             instance_variable_set(var_name, value)
         end
 

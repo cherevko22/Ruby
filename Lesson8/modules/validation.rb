@@ -1,4 +1,5 @@
 module Validation
+
   def self.included(base)
     base.extend ClassMethods
     base.send :include, InstanceMethods
@@ -25,11 +26,9 @@ module Validation
       protected
 
       def validate!
-        rules = self.class.rules || self.class.superclass.rules
-        rules.each do |rule|
-          #{validation_type: :presence, name: :number, options: []}
+        self.class.rules.each do |rule|
           value = instance_variable_get("@#{rule[:name]}")
-          send rule[:validation_type], rule[:name], value, rule[:options].first
+          send rule[:validate_method], rule[:name], value, rule[:options].first
         end
         true
       end

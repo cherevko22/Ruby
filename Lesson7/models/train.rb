@@ -24,7 +24,7 @@ class Train
   def each_carriage(&block)
     self.carriages.each { |carriage| block.call(carriage) }
   end
-####################################Needs to be checked!!!!!!!!!!!!!!!!!!!!!!
+
   def all_carriages
     self.carriages.each.with_index(1) do |carriage, index|
       if carriage.type == :cargo

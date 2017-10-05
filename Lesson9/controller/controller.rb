@@ -1,5 +1,4 @@
 class Controller
-
   attr_reader :stations, :routes, :trains
 
   def initialize

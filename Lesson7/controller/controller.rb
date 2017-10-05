@@ -109,8 +109,8 @@ class Controller
     system 'clear'
     puts "Choose the first and the last station:"
     all_stations
-    choice1 = gets.to_i - 1
-    choice2 = gets.to_i - 1
+    choice1, choice2 = gets.to_i - 1, gets.to_i - 1
+    #choice2 = gets.to_i - 1
     @routes << Route.new(self.stations[choice1], self.stations[choice2])
     puts "Route created."
   end
