@@ -5,6 +5,9 @@ class Station
 
   NAME_PATTERN = /^[A-Z]{2,3}$/
 
+  validate :name, :presence
+  validate :name, :format, NAME_PATTERN
+
   @@stations = []
 
   def initialize(name)
@@ -36,14 +39,6 @@ class Station
 
   def departure(train)
     @trains.delete(train)
-  end
-
-  protected
-
-  def validate!
-    raise "Please enter a name." if name.nil?
-    raise "Name must have 2 or 3 capital letters." if name !~ NAME_PATTERN
-    true
   end
 
 end

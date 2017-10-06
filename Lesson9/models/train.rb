@@ -9,6 +9,7 @@ class Train
   attr_reader  :number, :carriages, :speed
 
   validate :number, :presence
+  validate :number, :format, TRAIN_NUMBER
 
   @@trains = {}
 
